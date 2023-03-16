@@ -18,6 +18,24 @@ const router = createRouter({
       }
     },
     {
+      path: '/type',
+      name: 'type',
+      component: () => import('@/views/typeSelect.vue'),
+      meta: {
+        index: 1,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('@/views/register.vue'),
+      meta: {
+        index: 1,
+        requireAuth:false
+      }
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('@/views/login.vue'),
@@ -33,20 +51,9 @@ const router = createRouter({
 export default router
 
 router.beforeEach((to, from, next) => {
-  let islogin = localStorage.getItem("islogin");
-  islogin = Boolean(Number(islogin));
-  if(to.path == "/login"){
-    if(islogin){
-      next("/home");
-    }else{
-      next();
-    }
-  }else{
-    // requireAuth:可以在路由元信息指定哪些页面需要登录权限
-    if(to.meta.requireAuth && islogin) {
-      next();
-    }else{
-      next("/login");
-    }
+  let token = localStorage.getItem('token');
+  if (to.meta.requireAuth && !token) {
+    next('/login') 
   }
+  next()
 })

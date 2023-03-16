@@ -6,7 +6,7 @@ import router from '../router'
 
 console.log('import.meta.env', import.meta.env)
 
-axios.defaults.baseURL = import.meta.env.MODE == 'development' ? '//124.223.14.239/' : '//124.223.14.239/'
+axios.defaults.baseURL = import.meta.env.MODE == 'development' ? 'http://10.100.117.73:8090' : '//124.223.14.239/'
 axios.defaults.withCredentials = true
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers['token'] = localStorage.getItem('token') || ''

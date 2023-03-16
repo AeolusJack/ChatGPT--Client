@@ -11,6 +11,16 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  devServer: {
+    proxy: {
+      "/chatgpt-server": {
+        // target: "http://124.223.14.230",
+        target: "http://10.100.117.73:8090",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
   // transpileDependencies: true,
   // // lintOnSave:false,
   // devServer: {
