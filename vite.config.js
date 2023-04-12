@@ -14,8 +14,8 @@ export default defineConfig({
   devServer: {
     proxy: {
       "/chatgpt-server": {
-        // target: "http://124.223.14.230",
-        target: "http://10.100.117.73:8090",
+        // target: "http://124.223.14.000",
+        target: "http://10.100.117.000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },

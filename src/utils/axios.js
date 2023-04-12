@@ -6,7 +6,7 @@ import router from '../router'
 
 console.log('import.meta.env', import.meta.env)
 
-axios.defaults.baseURL = import.meta.env.MODE == 'development' ? '//124.223.14.239/chatgpt-server/' : '//124.223.14.239/chatgpt-server/'
+axios.defaults.baseURL = import.meta.env.MODE == 'development' ? '//124.223.14.000/chatgpt-server/' : '//124.223.14.000/chatgpt-server/'
 axios.defaults.withCredentials = true
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers['token'] = localStorage.getItem('token') || ''
